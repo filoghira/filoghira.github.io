@@ -1,1 +1,138 @@
-prova
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caccia al Tesoro - Indizio Decodificato</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 90%;
+      }
+      h1 {
+        color: #333;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      #indizio {
+        font-size: 1.3rem;
+        margin: 1rem 0;
+        color: #444;
+      }
+      #quiz-link {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.7rem 1.2rem;
+        background-color: #ff7e5f;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      #quiz-link:hover {
+        background-color: #feb47b;
+        transform: scale(1.05);
+      }
+      #feedback-form {
+        margin-top: 2rem;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+      function getQueryParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      function decryptAES(ciphertext, key) {
+        const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+        return bytes.toString(CryptoJS.enc.Utf8);
+      }
+
+      async function fetchIndizi() {
+        const response = await fetch("indizi.json");
+        const data = await response.json();
+        return data.tappe;
+      }
+
+      async function decodeIndizio() {
+        const chiave = getQueryParameter("chiave");
+        if (!chiave) {
+          document.getElementById("indizio").innerText = "Chiave non valida!";
+          return;
+        }
+
+        const tappe = await fetchIndizi();
+        for (const tappa of tappe) {
+          const controlloDecodificato = decryptAES(tappa.controllo, chiave);
+          if (controlloDecodificato === "OK") {
+            const indizioDecodificato = decryptAES(tappa.indizio, chiave);
+            const quizLink = decryptAES(tappa.quiz, chiave);
+            document.getElementById("indizio").innerText =
+              indizioDecodificato || "Chiave errata!";
+            document.getElementById("quiz-link").href = quizLink;
+            document.getElementById("quiz-link").style.display = "block";
+            return;
+          }
+        }
+        document.getElementById("indizio").innerText =
+          "Chiave errata o valore di controllo non trovato!";
+      }
+
+      function submitFeedback() {
+        const feedback = document.getElementById("feedback").value;
+        if (!feedback) {
+          document.getElementById("feedback-response").innerText =
+            "Per favore, inserisci il tuo feedback.";
+          return;
+        }
+
+        // Qui potresti voler inviare il feedback a un server o semplicemente visualizzarlo
+        document.getElementById("feedback-response").innerText =
+          "Grazie per il tuo feedback!";
+        document.getElementById("feedback-form").reset();
+      }
+    </script>
+  </head>
+  <body onload="decodeIndizio()">
+    <div class="container">
+      <h1>Caccia al Tesoro</h1>
+      <p>Il tuo indizio decodificato è:</p>
+      <p id="indizio"></p>
+      <a id="quiz-link" href="#" style="display: none">Vai al quiz</a>
+
+      <div id="feedback-form">
+        <h2>Feedback</h2>
+        <textarea
+          id="feedback"
+          rows="4"
+          cols="50"
+          placeholder="Lascia il tuo feedback"
+        ></textarea
+        ><br />
+        <button type="button" onclick="submitFeedback()">Invia Feedback</button>
+        <p id="feedback-response"></p>
+      </div>
+    </div>
+  </body>
+</html>
