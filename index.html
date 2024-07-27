@@ -11,7 +11,12 @@
     <style>
       body {
         font-family: "Roboto", sans-serif;
-        background: linear-gradient(to right, #ff7e5f, #feb47b);
+        background: linear-gradient(
+          to bottom,
+          #d60270,
+          #9b4f96,
+          #0038a8
+        ); /* Bandiera bisessuale */
         color: #333;
         display: flex;
         justify-content: center;
@@ -19,30 +24,31 @@
         height: 100vh;
         margin: 0;
         text-align: center;
+        overflow: hidden;
       }
       .container {
         background: rgba(255, 255, 255, 0.9);
         padding: 2rem;
         border-radius: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        max-width: 600px;
-        width: 90%;
+        max-width: 90%;
+        width: 500px;
       }
       h1 {
         color: #333;
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 1rem;
       }
       #indizio {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin: 1rem 0;
         color: #444;
       }
       #quiz-link {
-        display: inline-block;
+        display: none;
         margin-top: 1rem;
         padding: 0.7rem 1.2rem;
-        background-color: #ff7e5f;
+        background-color: #d60270; /* Rosa della bandiera bisessuale */
         color: white;
         text-decoration: none;
         border-radius: 5px;
@@ -50,15 +56,108 @@
         transition: background-color 0.3s, transform 0.3s;
       }
       #quiz-link:hover {
-        background-color: #feb47b;
+        background-color: #b7005e; /* Rosa scuro */
         transform: scale(1.05);
       }
-      #feedback-form {
-        margin-top: 2rem;
+      .input-field {
+        margin: 0.5rem 0;
+        padding: 0.7rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .input-field:focus {
+        border-color: #9b4f96; /* Viola della bandiera bisessuale */
+        outline: none;
+      }
+      .form-group {
+        margin: 1rem 0;
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 1.5rem;
+          width: 90%;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+        #indizio {
+          font-size: 1rem;
+        }
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script>
+      const tappe = [
+        // Tappa 1
+        // Squadra 1
+        {
+          indizio:
+            "U2FsdGVkX19XBrwcv33ANXHClaXR6jS6ZbJOmK2FsgFEGgH4iKVH9tPYrZX7IuhVXXpvzfVb7TlQYRrq+6dJtOI/QQu2oFIeTrLVUm8CkkHyF0eYPWzZER1kDu9wz9YiziOG2AFrYZU5stjn8z8dnAHVxNwsdz5KPUd+sLly3r1T68/GTtEYEPhHM0a7g+Q+NhG8336R3GB0NZfVT96EOLOI6by2gUD0pZK1k3CK8dvgniG0ks9T+C/anUHccTNwCHmBqBXdqV4CT476Plx/u+O52/xbuZpBUzJzfzWbouQ=",
+          controllo: "U2FsdGVkX19VkRtshuq7etZdoRRgFBNp4oC8wyro82g=",
+          quiz: "U2FsdGVkX195LzoKZLaFhFp6rNj/OgCyrVc1tKSBjcKx4mn9mA8cBXgVqRbhJyAsd19p67sxJ59DMw47woi1fA===",
+        },
+        // Squadra 2
+        {
+          indizio:
+            "U2FsdGVkX183d1/Cuyxi2PESv0iZxjqyBUbGBtOZcbqx2FUM3WifGXPwVtShwDuI5USJqgARK/+m5vtQvQZKCej08y6r5jF965O4n+pKCrkOAjqToNBwd/c+V2emCrRbKLrQBgCJFR9mGSb5IpLM6HwmDviIZuOghzjCYVB707aBSFacz6rbh1NMEzwGpbR7IWNSVRWtUap8OU6dI4uf1WDYRgIFXBmyu+bDkDDqJdCsxyxh9oEQ+Y/ufYSFPiAcHGrQUrPEINU9/fqFOcs6G9Mmrz1jXdoJtKcWpsWIFnA=",
+          controllo: "U2FsdGVkX18DQMm0KQyT0Q3YotM6aTU3jqRKcC2ng9U=",
+          quiz: "U2FsdGVkX1+ahugS13vuS+cProqpLcCfeQz1yaR6ANILkF5M/OQPhLcDmInQrMaQYi5mP9rDxdS+SlDya+jZnQ==",
+        },
+        // Squadra 3
+        {
+          indizio:
+            "U2FsdGVkX18KysdvvrElPFhW/IT/nGeWZ0cXpngNU+mnMTJVdmAsLZxAucOWT6bmEJZQ20PaEd66KFECTxwoW6e+m623ec3wj2f0VSY9g1LqR9dXBBf+oUWDIJt0PXJsYZHk7hz96O1XPkiQk0DQZaOIFTrfhH9mhbfakxoD/oCtwLzRZlEoo/bzlivFuDurF69zahb7Tu2SibNcor9TZS96QfCOdgTLmKFXlSjCGJLNFTnecPIU+nyjnEuHO9WgcBx6Si2OiC/CXGOi4v9sWXhQzl8lyPGeMLyZvRHpf/0=",
+          controllo: "U2FsdGVkX18IoGg8BwQLIjZ2unWhNfmkMUTAPzrncrg=",
+          quiz: "U2FsdGVkX1+5CTpn0WgZhLKf10b3uX/UQ04LtZ2DAyWc3wicJ12ftXkQXyxn2jmCYTxgzFXResYt9qt3zTvQCA==",
+        },
+        // Tappa 2
+        // Squadra 1
+        {
+          indizio:
+            "U2FsdGVkX1/jJ14fOvYGbsYiBdWD18CyWbRPuRSK2j0a0mjRihleCItiOoopBFAWDbAI4Y61pSiWhcm+ncf2iajdwQRx7RmPN3w2ZYYN7ig=",
+          controllo: "U2FsdGVkX1/vYyFpCCnEZdASixGql7vFTEZ3cshv7WY=",
+          quiz: "U2FsdGVkX1/pYQPq4cHgPz+vM8VDSHJzV7cxrWGOCjUCz+Ii/40mrmjDuErHIWCqb5DAZu/JO2OXkIPobJzgdg==",
+        },
+        // Squadra 2
+        {
+          indizio:
+            "U2FsdGVkX1+xK9gnLH1lJKWV0+ybLo4igZp1+vwZSibMpCL8cm8Wujkhp3TvpN1jkcpICgsjxRcb8gMt/2XkgV2jp7O66F4a/J9rWSCPbNI=",
+          controllo: "U2FsdGVkX19sJuyaDKAT45UzGBbEA4h0HyFOXebKtm8=",
+          quiz: "U2FsdGVkX1+nkN0uR26nmbTPDUdHKvqaFt5UeD1rKVpTHygJvTww8YJ92SAC/E2T6RwZTnf1NFcxxDPXNEHk/A==",
+        },
+        // Squadra 3
+        {
+          indizio:
+            "U2FsdGVkX1+sKf8ILrfRNgtbOsj6yvMBcHEG+xzp0w7bbTZgdkB/JySd+YhVLXwZHu0T/X/7BMNz2rA9iHbyuaFGc+nKmDafDfd73+U9UPs=",
+          controllo: "U2FsdGVkX1+W46XrG38Y1jPL9BigwPh+BQxaqvwRdsk=",
+          quiz: "U2FsdGVkX1+HlI88xQQ1DRYv6Ha0oA2/KsXwyId2GU6hCfN8nXe5/H8bkLxM+UddLPkS0DGhiu+ZSaRCulHHXg==",
+        },
+        // Tappa 3
+        // Squadra 1
+        {
+          indizio:
+            "U2FsdGVkX1+oh8QlnrY7ppaxA/eKPrD12REyUm69Ppi1Cx2G9YItyX6/kfOaasLx6ACKSKbL1WxLByAZGLhI3SZfFwkisqGrEZiBOCc4GWaUKEi1/Bb8L2jLZXvVB05Gve1AIoNh21gyhKHbwIoXTv7moD7ssWcIXRaftU6b/FM=",
+          controllo: "U2FsdGVkX1+N7mKRjsq8VRDrpMgOZ28Zr/Pl42Ly330=",
+          quiz: "U2FsdGVkX1+BehZ8apJszycN0H0zuyw06tCGYPUHZz7EA2WI+TwTbGT+dMm3EYp5ISNRuoUeBP6zbjlzSnSkFQ==",
+        },
+        // Squadra 2
+        {
+          indizio:
+            "U2FsdGVkX1/gyhh+Bi+gq4czCsx74TWcJtkQWkvyLEyNCChJlQh2uDW3md3zuUQXY4ANo3ahnqTFjjhRuLWRL+N6EVuQntsfHOJTIADHj/1TM+FkUCeRw9+K960l6vk0cFiJX2OP3UQalDr7XgWzjF3icvmIRaiIU0S2k0f3wlo=",
+          controllo: "U2FsdGVkX19mCZrd6g2G0RFKg8q1kM1XTr3OkxqD/Yc=",
+          quiz: "U2FsdGVkX1/WJdL0GYK04nB1B1QwhzJp1wD96Z82kv2siSjgeGCM0dAPRN/UjTyXUG0ZIshobqUqMloBdcGOnw==",
+        },
+        // Squadra 3
+        {
+          indizio:
+            "U2FsdGVkX1/54no7fUQxNEbgjHMT67atgKsOKo4JAR6W2ISO/s/X8soMEco7HPhRMi0co/jsGet9IvzCcoQJ47jbg74zxgwbL0cy23uUmy6n1+sG6CkC5hWl1Lp1favYxaHWYi2wPBMYLfe1FhF0TxoCykt3x7bK7kkEiX4Mndc=",
+          controllo: "U2FsdGVkX18gTh7Rn+6bBqBUoYlaGLBXl3rcprZWFx4=",
+          quiz: "U2FsdGVkX18GC1pcMMIjNsr99UVkF2KdqRc/jDfmuKrNtj2Q7OGRlByyx0pX15NY+w/OggOARGaPJzZvNKUoLg==",
+        },
+      ];
+
       function getQueryParameter(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(name);
@@ -69,70 +168,71 @@
         return bytes.toString(CryptoJS.enc.Utf8);
       }
 
-      async function fetchIndizi() {
-        const response = await fetch("indizi.json");
-        const data = await response.json();
-        return data.tappe;
-      }
-
-      async function decodeIndizio() {
-        const chiave = getQueryParameter("chiave");
-        if (!chiave) {
-          document.getElementById("indizio").innerText = "Chiave non valida!";
-          return;
-        }
-
-        const tappe = await fetchIndizi();
+      function findTappa(chiaveCombinata) {
         for (const tappa of tappe) {
-          const controlloDecodificato = decryptAES(tappa.controllo, chiave);
+          const controlloDecodificato = decryptAES(
+            tappa.controllo,
+            chiaveCombinata
+          );
           if (controlloDecodificato === "OK") {
-            const indizioDecodificato = decryptAES(tappa.indizio, chiave);
-            const quizLink = decryptAES(tappa.quiz, chiave);
-            document.getElementById("indizio").innerText =
-              indizioDecodificato || "Chiave errata!";
-            document.getElementById("quiz-link").href = quizLink;
-            document.getElementById("quiz-link").style.display = "block";
-            return;
+            return tappa;
           }
         }
-        document.getElementById("indizio").innerText =
-          "Chiave errata o valore di controllo non trovato!";
+        return null;
       }
 
-      function submitFeedback() {
-        const feedback = document.getElementById("feedback").value;
-        if (!feedback) {
-          document.getElementById("feedback-response").innerText =
-            "Per favore, inserisci il tuo feedback.";
+      async function decodeIndizio(chiaveSquadra) {
+        const chiaveTappa = getQueryParameter("chiave");
+        if (!chiaveTappa) {
+          document.getElementById("indizio").innerText =
+            "Chiave della tappa non fornita!";
           return;
         }
 
-        // Qui potresti voler inviare il feedback a un server o semplicemente visualizzarlo
-        document.getElementById("feedback-response").innerText =
-          "Grazie per il tuo feedback!";
-        document.getElementById("feedback-form").reset();
+        const chiaveCombinata = chiaveTappa + chiaveSquadra;
+        const tappa = findTappa(chiaveCombinata);
+
+        if (tappa) {
+          const indizioDecodificato = decryptAES(
+            tappa.indizio,
+            chiaveCombinata
+          );
+          const quizLink = decryptAES(tappa.quiz, chiaveCombinata);
+
+          document.getElementById("indizio").innerText = indizioDecodificato;
+          document.getElementById("quiz-link").href = quizLink;
+          document.getElementById("quiz-link").style.display = "inline";
+        } else {
+          document.getElementById("indizio").innerText =
+            "Chiave dell'indizio o chiave della squadra errata!";
+        }
+      }
+
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        const chiaveSquadra = document.getElementById("chiave-squadra").value;
+        decodeIndizio(chiaveSquadra);
       }
     </script>
   </head>
-  <body onload="decodeIndizio()">
+  <body>
     <div class="container">
       <h1>Caccia al Tesoro</h1>
+      <form id="form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <input
+            id="chiave-squadra"
+            class="input-field"
+            type="text"
+            placeholder="Inserisci chiave della squadra"
+            required
+          />
+        </div>
+        <button type="submit" class="input-field">Verifica Chiave</button>
+      </form>
       <p>Il tuo indizio decodificato è:</p>
       <p id="indizio"></p>
-      <a id="quiz-link" href="#" style="display: none">Vai al quiz</a>
-
-      <div id="feedback-form">
-        <h2>Feedback</h2>
-        <textarea
-          id="feedback"
-          rows="4"
-          cols="50"
-          placeholder="Lascia il tuo feedback"
-        ></textarea
-        ><br />
-        <button type="button" onclick="submitFeedback()">Invia Feedback</button>
-        <p id="feedback-response"></p>
-      </div>
+      <a id="quiz-link" href="#">Vai al quiz</a>
     </div>
   </body>
 </html>
