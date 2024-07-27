@@ -90,71 +90,185 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script>
       const tappe = [
-        // Tappa 1
-        // Squadra 1
         {
           indizio:
-            "U2FsdGVkX19XBrwcv33ANXHClaXR6jS6ZbJOmK2FsgFEGgH4iKVH9tPYrZX7IuhVXXpvzfVb7TlQYRrq+6dJtOI/QQu2oFIeTrLVUm8CkkHyF0eYPWzZER1kDu9wz9YiziOG2AFrYZU5stjn8z8dnAHVxNwsdz5KPUd+sLly3r1T68/GTtEYEPhHM0a7g+Q+NhG8336R3GB0NZfVT96EOLOI6by2gUD0pZK1k3CK8dvgniG0ks9T+C/anUHccTNwCHmBqBXdqV4CT476Plx/u+O52/xbuZpBUzJzfzWbouQ=",
+            "U2FsdGVkX18glCjMGi+/X0OhJZ5PwGhJLsP9GQqaktsC5xXCcmgwP0TKqmZ70z/xDGNUF7D7c97+g7hiSgPN+azrrbUUX13oL6LPTG0pA1A=",
           controllo: "U2FsdGVkX19VkRtshuq7etZdoRRgFBNp4oC8wyro82g=",
-          quiz: "U2FsdGVkX195LzoKZLaFhFp6rNj/OgCyrVc1tKSBjcKx4mn9mA8cBXgVqRbhJyAsd19p67sxJ59DMw47woi1fA===",
+          quiz: "U2FsdGVkX195LzoKZLaFhFp6rNj/OgCyrVc1tKSBjcKx4mn9mA8cBXgVqRbhJyAsd19p67sxJ59DMw47woi1fA==",
         },
-        // Squadra 2
         {
           indizio:
-            "U2FsdGVkX183d1/Cuyxi2PESv0iZxjqyBUbGBtOZcbqx2FUM3WifGXPwVtShwDuI5USJqgARK/+m5vtQvQZKCej08y6r5jF965O4n+pKCrkOAjqToNBwd/c+V2emCrRbKLrQBgCJFR9mGSb5IpLM6HwmDviIZuOghzjCYVB707aBSFacz6rbh1NMEzwGpbR7IWNSVRWtUap8OU6dI4uf1WDYRgIFXBmyu+bDkDDqJdCsxyxh9oEQ+Y/ufYSFPiAcHGrQUrPEINU9/fqFOcs6G9Mmrz1jXdoJtKcWpsWIFnA=",
-          controllo: "U2FsdGVkX18DQMm0KQyT0Q3YotM6aTU3jqRKcC2ng9U=",
-          quiz: "U2FsdGVkX1+ahugS13vuS+cProqpLcCfeQz1yaR6ANILkF5M/OQPhLcDmInQrMaQYi5mP9rDxdS+SlDya+jZnQ==",
-        },
-        // Squadra 3
-        {
-          indizio:
-            "U2FsdGVkX18KysdvvrElPFhW/IT/nGeWZ0cXpngNU+mnMTJVdmAsLZxAucOWT6bmEJZQ20PaEd66KFECTxwoW6e+m623ec3wj2f0VSY9g1LqR9dXBBf+oUWDIJt0PXJsYZHk7hz96O1XPkiQk0DQZaOIFTrfhH9mhbfakxoD/oCtwLzRZlEoo/bzlivFuDurF69zahb7Tu2SibNcor9TZS96QfCOdgTLmKFXlSjCGJLNFTnecPIU+nyjnEuHO9WgcBx6Si2OiC/CXGOi4v9sWXhQzl8lyPGeMLyZvRHpf/0=",
-          controllo: "U2FsdGVkX18IoGg8BwQLIjZ2unWhNfmkMUTAPzrncrg=",
-          quiz: "U2FsdGVkX1+5CTpn0WgZhLKf10b3uX/UQ04LtZ2DAyWc3wicJ12ftXkQXyxn2jmCYTxgzFXResYt9qt3zTvQCA==",
-        },
-        // Tappa 2
-        // Squadra 1
-        {
-          indizio:
-            "U2FsdGVkX1/jJ14fOvYGbsYiBdWD18CyWbRPuRSK2j0a0mjRihleCItiOoopBFAWDbAI4Y61pSiWhcm+ncf2iajdwQRx7RmPN3w2ZYYN7ig=",
+            "U2FsdGVkX1/zwv7oTyXuR1R4yNV925Lbygmvo8XCNIcCCE/OuX55mAJ0vQ0QcVkSd580hwZFPX6GEJapHSHSRFaqaf1ScQWRr0Avil0zaJS5fUeeLBWKbmILI3SCpNQcssL+r1JL595C6oe6IaMM3jTp77sTPD848A12QuFTt94=",
           controllo: "U2FsdGVkX1/vYyFpCCnEZdASixGql7vFTEZ3cshv7WY=",
           quiz: "U2FsdGVkX1/pYQPq4cHgPz+vM8VDSHJzV7cxrWGOCjUCz+Ii/40mrmjDuErHIWCqb5DAZu/JO2OXkIPobJzgdg==",
         },
-        // Squadra 2
         {
           indizio:
-            "U2FsdGVkX1+xK9gnLH1lJKWV0+ybLo4igZp1+vwZSibMpCL8cm8Wujkhp3TvpN1jkcpICgsjxRcb8gMt/2XkgV2jp7O66F4a/J9rWSCPbNI=",
-          controllo: "U2FsdGVkX19sJuyaDKAT45UzGBbEA4h0HyFOXebKtm8=",
-          quiz: "U2FsdGVkX1+nkN0uR26nmbTPDUdHKvqaFt5UeD1rKVpTHygJvTww8YJ92SAC/E2T6RwZTnf1NFcxxDPXNEHk/A==",
-        },
-        // Squadra 3
-        {
-          indizio:
-            "U2FsdGVkX1+sKf8ILrfRNgtbOsj6yvMBcHEG+xzp0w7bbTZgdkB/JySd+YhVLXwZHu0T/X/7BMNz2rA9iHbyuaFGc+nKmDafDfd73+U9UPs=",
-          controllo: "U2FsdGVkX1+W46XrG38Y1jPL9BigwPh+BQxaqvwRdsk=",
-          quiz: "U2FsdGVkX1+HlI88xQQ1DRYv6Ha0oA2/KsXwyId2GU6hCfN8nXe5/H8bkLxM+UddLPkS0DGhiu+ZSaRCulHHXg==",
-        },
-        // Tappa 3
-        // Squadra 1
-        {
-          indizio:
-            "U2FsdGVkX1+oh8QlnrY7ppaxA/eKPrD12REyUm69Ppi1Cx2G9YItyX6/kfOaasLx6ACKSKbL1WxLByAZGLhI3SZfFwkisqGrEZiBOCc4GWaUKEi1/Bb8L2jLZXvVB05Gve1AIoNh21gyhKHbwIoXTv7moD7ssWcIXRaftU6b/FM=",
+            "U2FsdGVkX19OzJ8Nn5RBRY65Gjz75ocH4rO8Fvcd1euHSc1q5oPoYrje9OFNCyQT79IQyYpL4SGyxjpOfhw6sCoUZz7f+OtBh0fkaGmiTUv9tIzQDRiDbipa54NxRMbkeoqkbLbdKohOr5GHEwFENUd/1wSkCaXN3OxTVVfeB9KzxlhuJdE6fBFPTPCsdTtC4Yutp1KIs6ZBPwAcQt+RDw==",
           controllo: "U2FsdGVkX1+N7mKRjsq8VRDrpMgOZ28Zr/Pl42Ly330=",
           quiz: "U2FsdGVkX1+BehZ8apJszycN0H0zuyw06tCGYPUHZz7EA2WI+TwTbGT+dMm3EYp5ISNRuoUeBP6zbjlzSnSkFQ==",
         },
-        // Squadra 2
         {
           indizio:
-            "U2FsdGVkX1/gyhh+Bi+gq4czCsx74TWcJtkQWkvyLEyNCChJlQh2uDW3md3zuUQXY4ANo3ahnqTFjjhRuLWRL+N6EVuQntsfHOJTIADHj/1TM+FkUCeRw9+K960l6vk0cFiJX2OP3UQalDr7XgWzjF3icvmIRaiIU0S2k0f3wlo=",
+            "U2FsdGVkX1+iu1beWji49h2a5qS5lvrbbDqJH2OogSP8dU7wBfzgER0RiflgpFck",
+          controllo: "U2FsdGVkX1+9KRwC6zIyiO1TPq3InXGhSVL0byQ8Rck=",
+          quiz: "U2FsdGVkX1+465FyBVK6SzwiSC9OziIsFYU5WYPlHGvNFsqJsaW0CgUvjokCrNTPdSnaJk238kl/+BIZwl/ZrA==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+YywyTW4aWo0plWYQo9mX2GLn0TxSrqJYBt9hgLQoCYTgVGn4/lKd9n1cixvHgc/JRV4i6AvVCFazSD5gaJhAwbw6tIgtG3np1EV6s7TwyEYVSgnK6ZvAGZqqdvSsGXLh7NHAVm91SJlUcuC+Qlpl8AiFLLZ0eb4uc3gXWtlMDxWl82JM/DEOD5iFdrVDNYf/qCM9lVBb2TT/vdvLF8kJwG0zBXpGwqnCa6xMwN5cx7VzqYG7JZjzo",
+          controllo: "U2FsdGVkX1/mkAr94UO6eh5wL7+6jAFA25KxWBtWPtQ=",
+          quiz: "U2FsdGVkX18CGa4AFQsledeu6O19Ed79RIWGqUkSMOvkKeD5FiKZ2Yao8qjvlLaZmeVEAIQkq2/MS3aYCgN/uQ==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/NvTuWidcShjDWRWqNp7aY3Wj30XUXBF3TGJ+ytwevL0cnp8IUEG++qORmCRY38hhfeKmwxoQfjH9w48GcatglDmHg8v1U06iwiOSG1ggPM0Yoxj26S+paOCQ1JpMU4aBuntGyjaM/+KPkmPueBcT22dlyQij1P+A=",
+          controllo: "U2FsdGVkX1/48PlLOGUbjfiaBW/GETgETuilP4FIORs=",
+          quiz: "U2FsdGVkX1/iznrHstIZMrdBlM9TnzoTsOXJHaFGjJ69EYDaCXHIzgPimucR7O7noxMg6dB0o2ZHbHEfRQiFAw==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX18t/indzdOHgBLv5qu8cWhLEzkAH3gn4LCrKYkMWVSToofqUXvndPNXGs82A28osKFnrZNWyqTUWe3lOAazsoeMl7bu+aG9N72SGA7Ii8K3I6WiKBxTdSszUzBoKODEchk/PY0oCwrakxzjQCdMb1NuKtt8jbTgnko=",
+          controllo: "U2FsdGVkX1/5jlzIP2m8TzfqlmvD8LnPKY8JKpEUXeM=",
+          quiz: "U2FsdGVkX1/Wwq1pOvySxqYR4bYr93K2tG+yUAlpHLffaYTB7ovEZrfLp97W2C/y8DozJcF3jOwiw7A2ZjtTCA==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX19lPpGQlnWC106wti4gSOkzLC1HEGlWnClm5R1PrPRPunG4312608Q1MdXP0oBgnd6XCf1iEXRpHVuiam75ueoeK+BftybLfhhvZ6Bd2ilZdsx60YtDtHhRllhQevGQF2nWl8Sp89ZN5BxIC3qNtd7BOEfqz2itJA8zs45G5z7NJjEkQsfFh3c26ydslHujna4CVvZSUQHvbw==",
+          controllo: "U2FsdGVkX1/VIn9oVOT3EXP2eJ6V8whKYZVYO+O46Ow=",
+          quiz: "U2FsdGVkX1+fmAnLOcST08BdL4wEY0Lfo7kC/HHDO4gkP+GMCy8N7k+ACU/c7dwm427jpVZ+S81W2KN9AJOk8Q==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+BJsfvMy/Uvv/LIbNbaRF6Mx2QSXsQZSrHji4/FNnFbgVysKvXilQzgzzWIfwcz91E+qa3f1NjQpY1JMtGvUKrjV+aoDIH3AUaz5i15oVcrjlgxXNYt5HMPAnQkZSE3u/RGaDD6bau2g==",
+          controllo: "U2FsdGVkX19ZUsFcXPbaNMBvBPGBDN8u4H4L6gB/NBc=",
+          quiz: "U2FsdGVkX1+5ETN7n1y+SRFhZXOmRlSkZH22iwlBmoMoGZUSWmuAHtL14p/1GnUkItR0/L3T+QcIvpq0v5PcyQ==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX185NFR7nI+bIrNtqtHPgoE25QbGMCR77va6IH/DImCHFyHg9pRBTwtaXh8BcGC4T+qbNF8J4ocs7ZhUi60swNQdwVdTkVCE0jHokr7rg4ZyPHKultNYM8OUmnNhh4oOcp1YY97kA/O/KfHbvYJ4sEQCBhJ5QTXoDA9Gncpv0+6OfTdTFOdElKW3qk/WatBiK8hpBoF5Zu+kQx+ys5vZnP59GZHk1ICObvtkjz+z3czUo4Yb4Fn25ycBJGXh+rxLb2Uq17fiynSIMr3/C4y2fBcY6eVv1NeHpYg=",
+          controllo: "U2FsdGVkX18GMsWCU8THrVKdPYOSWQry+GYwxJftuCc=",
+          quiz: "U2FsdGVkX19N1vWRUY6IfatkHNjXvZ4R2AugNtvI+tiOVKt8YYhyLKjy7OwI83l9IoV9rB4stQrw8ZkqwLJE5Q==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/mjk6vrakvLkz5vDoINqwSBco2j54fiffY8ARvLmqDBl5s9L2ijp1LDKmZF8mYZ0jsJWpSv1177al6o1Mebhgd2Dh3/Bu/cWk/5WEvUsBKM885UD1DIBTG85YJPr497BcAdR30LJSDm4qQvcbQEovZ80ovre4OIMU=",
+          controllo: "U2FsdGVkX18DQMm0KQyT0Q3YotM6aTU3jqRKcC2ng9U=",
+          quiz: "U2FsdGVkX1+ahugS13vuS+cProqpLcCfeQz1yaR6ANILkF5M/OQPhLcDmInQrMaQYi5mP9rDxdS+SlDya+jZnQ==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/ZS1LmtFP49iR4QC1j0HQWuFnotLvLmemvbES3dfA0PJqQhd9pxmpHfOpdoF8V1j4YY9km0TRIlBekXnvd1wkKohHOfTtU2tajvXvwkfo8JQUSdRr+xdkuAKAydT30zCShgIUQROi5oEanhwh8/IjWhBCVwd9zMZ0=",
+          controllo: "U2FsdGVkX19sJuyaDKAT45UzGBbEA4h0HyFOXebKtm8=",
+          quiz: "U2FsdGVkX1+nkN0uR26nmbTPDUdHKvqaFt5UeD1rKVpTHygJvTww8YJ92SAC/E2T6RwZTnf1NFcxxDPXNEHk/A==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/gugE+eeQvdaZaKH3cz8V0mhPC5vdHZ9nuGsBc1AcCE1kiyS8QWfcZsDbP+TIgB/S2Lfjo2OqAyBdf0ESzC+sRirvJx2D4zXM=",
           controllo: "U2FsdGVkX19mCZrd6g2G0RFKg8q1kM1XTr3OkxqD/Yc=",
           quiz: "U2FsdGVkX1/WJdL0GYK04nB1B1QwhzJp1wD96Z82kv2siSjgeGCM0dAPRN/UjTyXUG0ZIshobqUqMloBdcGOnw==",
         },
-        // Squadra 3
         {
           indizio:
-            "U2FsdGVkX1/54no7fUQxNEbgjHMT67atgKsOKo4JAR6W2ISO/s/X8soMEco7HPhRMi0co/jsGet9IvzCcoQJ47jbg74zxgwbL0cy23uUmy6n1+sG6CkC5hWl1Lp1favYxaHWYi2wPBMYLfe1FhF0TxoCykt3x7bK7kkEiX4Mndc=",
+            "U2FsdGVkX1+w6mQa/Yk2Y/wnBs22HTGjkcC61L5tnADjA4wnZ2QYDO6SSv2YKfWe7IOk7musvTKPFByCURFWzobGKFChHkQeZUByeZNSEy9402KY22YbAjfAxw+Ei7BtQQGSsLJyQAld0EBqBDmjDA==",
+          controllo: "U2FsdGVkX1+VwJohsnoDXenPNu6C0E/pcDCjDG38qUs=",
+          quiz: "U2FsdGVkX19nUzjKUF71QOsV+DFZSZ2lO89Gzybb/BROiQiUO6ngawgqnqt++8SokUP4Tp5sw3L/0CHzfUb/nw==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+ypy+fOa6++KMs8wQtvAK7EnS9ox1zoItp7qlt3KVVRTq5q/WY2tftx5ZsegV3fUNL7z3S2rfc5MVnZt36cqmt1KLvvfT9kLAW1lpdWPyT66ZcVFewlK3lhrzc9ipHlsyXCNgLdR95nJhWUbnxyXPWZbPDcpKjAmqdzThyX/fZTX5JkINa/J2hYLdsHYSZrJSt4ZJKn+Pzg5g7lsYClI4xHj+vLnZYrE8gOJxcS5XGvxJer66xlWlKbtPTTxPe1a0ywHD37XZU9Gw4yrwU+ZgVzyBzTdhPeU8=",
+          controllo: "U2FsdGVkX19R7SSaG5ne3e9rSMgi7RoPFP9ewpkh3GQ=",
+          quiz: "U2FsdGVkX1+ImPmFmA8dhpH1OYeoSA6RO1rkP+/3X2M/8cwVmEMs62fKMQqHkkkPPPnBrdKmjyC58iAvUpDYOw==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+gO42x+c6guJgoO86VZ7G0aZqoewk7h13lL+sSHQtPQ+qWcs24wi0CgjW1O/IHZwRRaWQMgYNBBz36vHb/2hmMCNM2dhUIocOHtYivv4c6669bzcuKhH8d35uaYM+jqD3aQ5BDOsAveVt7Kb8L0BGxnLkBzQbGzIM=",
+          controllo: "U2FsdGVkX1+trLSNDHootOvfJZ2KTiTRB17/KNgLi/A=",
+          quiz: "U2FsdGVkX18sf/aj0t+RYS57Kqfjap2gdZaCWX7ujM1/bh0If0zZnNB14hn15uvDQMgVoEDrr41ByfIksmAqcQ==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+jpGbPRe9Ay+S7s215E8dokYNU7GzutLgqeRkcH9wci44QE/bF7m0AWNNS6RS+8uzup1LATEE/QCFG+z1t/Ug5PUbO0axD/fM+1gQxzHf9wHBGhgsWqYBIngJLJdL35BRIz7OfDzGhK51NnDCptjbHS5I7yDh8xKw=",
+          controllo: "U2FsdGVkX19hTW/wkoQQnOXBu6W3AGjHXGs5T64w0fY=",
+          quiz: "U2FsdGVkX1/rLtYszedMy7Xycw/1v9QzmJEypZ5iZFUKr4yU3MbHF9+ship52zUTYBjp3nRZNEM4mg7+3shLQw==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+r6cuk0+30t1aV+ExgD7NB2p8cK3uFmZ8Z9+E3nkIj7BVJ5Q6aH+AyhhNeoEjHOarrOibfKSZF4/ngpgVLoRaDmCUVEpPtYtvxjf1fA5XF2PDx/ridNua4RvOIe4Dv0nUeQpkp3NVq+bMXlZ1nyUA+f8pnRr5IdK2id3Oaai98YaI7EcxHa8H/nF0tzIg9tJHSxNWIM9EmYw==",
+          controllo: "U2FsdGVkX19SmYr/L4ac/TAEMM2a1nxt2tqJe18+qBA=",
+          quiz: "U2FsdGVkX1+GcURDFHKqjJmf8v3yzn0MtNOY8JhY0vHOsbArdQkf1XKAc1pjQGTB9lBiXA4zVJC/QIv1pIszxg==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+DIiBx9/R+ITD/7hhjmduTkxs5u8VhhuPGJrGnRXun8/shL+G/yHGSKG+SBM6vZd1XYNhx/SvISx2wJN0f1d5HmtN+xp/nfJJZm4Z72GF1ErFC1vrqvic7zwBvh5cZ+/v3fXTvkK8Xg3NHABZOc0Xv5F10NK/i+P+u0tvSmrr6pktMnMgPmaOI91qkujDQbrVj1zhZRakovxgYNLo7POtInDLp2IzAC5RP9KilsRwR+xggUJp6VC3J",
+          controllo: "U2FsdGVkX19x8fgJVBBagg6n2ydSIu1hwW5/PuUuOjg=",
+          quiz: "U2FsdGVkX18P4Tu9JiqbUHPkdSHezHTbNjIGa/4IHt5vk14Zv+j0hTdOZv+7rKncAJJYW3e4TXOE4OZaqL3kkA==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX195BDxpYhvLHdcHdPGoviXtZ7Fk3xnlsTNbTg7OzIr5YkckGSSKiXDHN117i3Aves7962rsP5DUHbNBbZl56NvU1PiZOITWpInFO9iZZJsJutBVCnWCZDoGiAfA61mXaiQdXuMBD/vTFdI4Nsq2UG1eWkLuLEXfohJP4cpSjXpUDtOb7yNeb+LsCu6/NlYMaO5ncqjm/fRdGoHQq0Q1IWC4Po6HWHYVLgC/ZW4glK8a29UZwDNaTG5P8voKO2jZCPgwbn0dUbtPshfS4BUk+G469ZeKpQaPrOM=",
+          controllo: "U2FsdGVkX189sO9Mz2PzDGiAPlFZAnPyWCqA0cxWyqM=",
+          quiz: "U2FsdGVkX1/yqDtTkO3MlXVQPa5nykrUkXJ57EezvI8kE6iIsaPaikAzgSW5VR9mQjBpJJEmfaqX9ZsRHgATcQ==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX19DbpFuMLnasB3VGN+SJaGpoOWy/Br6iEEj9pak29BN+Qc/sMdDyNqWkZGtyjgiZOd9s/PaF2Sr8wyvdi1SkjkygBAAoc4dQiF90bTiaWY4RzZ72hUC/YVokC4eMuebF9bFcFUXUR6ms2W+ybYLaqW6MwraOzZvpcwO2m/PNvvxp4NyIx8hlCqMOPun+vIKtN0E0gnYA0Lg0w==",
+          controllo: "U2FsdGVkX18IoGg8BwQLIjZ2unWhNfmkMUTAPzrncrg=",
+          quiz: "U2FsdGVkX1+5CTpn0WgZhLKf10b3uX/UQ04LtZ2DAyWc3wicJ12ftXkQXyxn2jmCYTxgzFXResYt9qt3zTvQCA==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/8lEUoqS0HZxhKE7pb4JLX6f0gd6JGzyoeW7guIaLstqVLv/Hg0+yxqHNpnhVre2J2IfkJdH6q6qnVhRQm5u/L7KDFSp0JD502VJml9DXE/OUgj/Kn2NusZz9yHOdB5I/bBYeza166Rm0zG9LM+3plxRSMPVKZlJw=",
+          controllo: "U2FsdGVkX1+W46XrG38Y1jPL9BigwPh+BQxaqvwRdsk=",
+          quiz: "U2FsdGVkX1+HlI88xQQ1DRYv6Ha0oA2/KsXwyId2GU6hCfN8nXe5/H8bkLxM+UddLPkS0DGhiu+ZSaRCulHHXg==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+0tH4oO/ETesrJAThWz6mLkIy6Mxc8ZNF3Agxnx1NZI2efquJ0ipdBf36S9yxTOZDipa/hlLPqQiBF1APGRud5wKlE5TPeuZevEdvO7z03e5x1rwMYT5nymp3dpAMS6/gx7Z9SGebmZt4Q+M5SUJ3NsaHsyV+gcuw=",
           controllo: "U2FsdGVkX18gTh7Rn+6bBqBUoYlaGLBXl3rcprZWFx4=",
           quiz: "U2FsdGVkX18GC1pcMMIjNsr99UVkF2KdqRc/jDfmuKrNtj2Q7OGRlByyx0pX15NY+w/OggOARGaPJzZvNKUoLg==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+C7Q1YcBLPthGsKJJ2KOk6hXRj8UDtQxKU0vFlrzxJ6pYyj/PBW52UdxsMS/jjd8XTmQ6GAnUe197BmVsrgluTv/LcHD/RJ0uInt6eb5JVRddurX8gSAS42YC7sO7R2HijKKtlOOMnUK+GThxfy9q1WBh++sWD8Uiwr9jY85R/FL7ii7y6ocls4mzH/FWa5iMyrK2g8tVyRzLA0Aq0pn4HzpgWVuOBBwda3wG0J8xxKCuVxwvJrhHwpTtdkeW1gHhS6MkNW1JbfHtr2gommag4RFkxXx6hiYg=",
+          controllo: "U2FsdGVkX1/EzSYqIF8OLfAdptSQmh+xLT+LeRebNP8=",
+          quiz: "U2FsdGVkX18G0tWKvtpt2JWsceCg88QKkz/Dwr4PCWcQcm6dSbKsypMzfpYsDXCk0gGTR1E4SXsU59+11K4BQA==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1+Nx4jXa8tZv9eJrk9X+R7o7oJkremRaENo+h9VEBMPYQJUT0+4B3/cE80LeHCLryiyZ7D9sz/V8gBOXnZRN1oqqRihNlkdsiMlMLfEm4eSrgFtx5pNngjX2e5G0knq7sfo/xmWl24PIWU4PMFU0vguEueN3s3YZf0=",
+          controllo: "U2FsdGVkX1/uRzSyZQ7PBL557e+TiR9KMqyIaXpAiIw=",
+          quiz: "U2FsdGVkX19ZZ3vQrS/FR0uYvnxcuWOKBP6l7JbRi1a/iK3+A0190A/wvFg42cmwezWcd1QDQZggnG5vs4EMSg==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX19GBWBvLBHZSwJLsGOdTat/LYNOT7+ShJM4GcZgHEUmApeYDTMCxkJ3Ofu2QW6wAKdu4Y9xsa4Ha1FVQOv8vJU2yQwINlZHt0NMSMYFpGGjTDuAMa+sS06/vhbBGtcjIDFNZFfsfqdMcVAhRw/g330odbyvGzXf5QbKjbUNLEC78UcvVIjPhN9FzXwPot/Ze2xMET0g+IkbVYS28KdljCdlbmskn81KGlSrsg37891eKR8pEW16lVeF",
+          controllo: "U2FsdGVkX1+k5blbLtxmEpHVhHNPWKtgAsSjT8Nymgw=",
+          quiz: "U2FsdGVkX1+CeTJ6yBXmuMIlsNrmNhAG91T8cHVwymiUzqSP4wvBz1xP6A7VzVe+iMC97cbmu6XBPkydVRJ+1g==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/ZngvOaCb/QHw2wcjGWCNpH4axGZNLKgjc9MbvW/ZdKnoC28+gIp+cjx9+QBBCuQh/Dw3fgkCkfnRbh1ZGGalDPocn7J7uhjTFcIFiVmhNzsFImzvAakYs27vkvSJhii1FwNy/07Xy0mcg35XsTKpvaBlBi7QTwAT7isEmOHNsOFAQLUQbdu1QjLahC70yy9TcQQ9RvpeP8w==",
+          controllo: "U2FsdGVkX19K9FKaBOA57a2oKVjt0NUYbUGFm7LKXQA=",
+          quiz: "U2FsdGVkX18n6ZazjTuiW93fGfcq0wK3T3Y4EvCrqjzCbFcqarROup5kO7UyrT4YA7D9wKh1B/EFrweNi77hwg==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/Lgc4W7Csq5sj9+6lQrl/9z1beT1lI7wNQXUszAE9BTW0yeG3n46+EFbp0LHXFCTRiRpCmwT4R1dVL+v03LqKHpV2IFPSf5W6dXqhquw7TOsr6/G1vglZo1sn4PdmCpTM1JB8bCVVARg==",
+          controllo: "U2FsdGVkX191iElwYudoDCKK3U9rEvWtLPlrU6ommvo=",
+          quiz: "U2FsdGVkX19VhySJCW035m62thlFjlAz2k5CDrqGWG8mP368Jes0TAp8Bo1Gco96M5XHabOcC/bgE/YNEkgwWQ==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX1/oedbV9A6l2YcRXdGFlkOOIXGskC2jSAksDNQpu/CHL1jbE6VE52sb",
+          controllo: "U2FsdGVkX1+uqQXSXi53gWjwkFGq4JKxsb2vQUlZQG4=",
+          quiz: "U2FsdGVkX1/Dkljm1GEUil6i1hB8xqo3DuJ7O25DquePjOgZVOrhqqkFAWMQLLrnKx7imkJKYpAoArWz4mkVuA==",
+        },
+        {
+          indizio:
+            "U2FsdGVkX18eN+WYsNOGX0PFhLqF5mpZuGEfECUDXwtyDCTtLLjYbyIXxoi/B1OY6L31Bm5Lf6bjvPPPJdqb6Jgs6gS2FvhPW4xuyfc3QCMXJ+QdWBMB45aGxroHTw8NgRbCsL3ljtolYIocb32f5bM83VcLQJPGmahtqm+UYMcMlIyMX4HRzw+fk3CwXtyDFwIXy/7u0C3mN0w5mE3CXDMp1nLDGn+9Kup+tdTxEacd+v3D7xkhf1FJoXO6ddivEgGTf3FW2Xut+XnQXBmECAXmy1eR9AQaAtzg+qmpelY=",
+          controllo: "U2FsdGVkX1+3mOb7SYh679INPXjxsqcDXTQJukWnjnw=",
+          quiz: "U2FsdGVkX1/WlHBJxOgCpR0nLHv1q1qnyoRW4y4OY2KWe17XUbAienvxbgPX1WRbC/z/q1uHE0amU6b1hg5KJw==",
         },
       ];
 
