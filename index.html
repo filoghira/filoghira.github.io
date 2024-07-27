@@ -284,12 +284,18 @@
 
       function findTappa(chiaveCombinata) {
         for (const tappa of tappe) {
-          const controlloDecodificato = decryptAES(
-            tappa.controllo,
-            chiaveCombinata
-          );
-          if (controlloDecodificato === "OK") {
-            return tappa;
+          try {
+            const controlloDecodificato = decryptAES(
+              tappa.controllo,
+              chiaveCombinata
+            );
+            if (controlloDecodificato === "OK") {
+              return tappa;
+            }
+          } catch (error) {
+            if (error.message === "Malformed UTF-8 data") {
+              continue;
+            }
           }
         }
         return null;
